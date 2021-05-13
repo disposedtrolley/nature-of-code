@@ -13,4 +13,4 @@ Code snippets and exercises from reading [The Nature of Code](https://natureofco
 
 `src` is organised into several namespaces, each implementing quil's `defsketch` entrypoint. `clj <path/to/file.clj>` can be used to execute the entrypoint of a namespace.
 
-For example, to run the vectors chapter, execute `clj vectors/main.clj`.
+For example, to run Example 1.1 of the Vectors chapter, execute `clj vectors/ex_1_1.clj`.
