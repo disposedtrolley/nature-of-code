@@ -11,6 +11,6 @@ Code snippets and exercises from reading [The Nature of Code](https://natureofco
 
 ## Running
 
-`src` is organised into several namespaces, each declaring a `run` function as its entrypoint. `clj -X <namespace>/run` can be used to execute the entrypoint of a namespace.
+`src` is organised into several namespaces, each implementing quil's `defsketch` entrypoint. `clj <path/to/file.clj>` can be used to execute the entrypoint of a namespace.
 
-For example, to run the vectors chapter, execute `clj -X chapters.vectors/run`.
+For example, to run the vectors chapter, execute `clj vectors/main.clj`.
