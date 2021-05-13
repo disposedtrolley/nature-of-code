@@ -10,3 +10,8 @@
     (reduce + (map #(:x %) vectors))
     (reduce + (map #(:y %) vectors))))
 
+(defn sub
+  [& vectors]
+  (make
+    (reduce - (map #(:x %) vectors))
+    (reduce - (map #(:y %) vectors))))
