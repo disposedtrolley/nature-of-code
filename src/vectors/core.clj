@@ -22,7 +22,20 @@
     (* (:x vector) n)
     (* (:y vector) n)))
 
+(defn div
+  [vector n]
+  (make
+    (/ (:x vector) n)
+    (/ (:y vector) n)))
+
 (defn mag
   [vector]
   (Math/sqrt (+ (Math/pow (:x vector) 2)
                 (Math/pow (:y vector) 2))))
+
+(defn normalise
+  [vector]
+  (let [m (mag vector)]
+    (cond
+      (= 0 m) vector
+      :else (div vector m))))
