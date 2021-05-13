@@ -21,3 +21,8 @@
   (make
     (* (:x vector) n)
     (* (:y vector) n)))
+
+(defn mag
+  [vector]
+  (Math/sqrt (+ (Math/pow (:x vector) 2)
+                (Math/pow (:y vector) 2))))
