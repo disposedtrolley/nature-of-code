@@ -23,7 +23,8 @@
     (-> mover
         (mv/apply-force wind)
         (mv/apply-force gravity)
-        (mv/tick))))
+        (mv/tick)
+        (mv/check-edges (q/width) (q/height)))))
 
 (q/defsketch ex-2-5
              :title "Vectors - Ex 2.5"

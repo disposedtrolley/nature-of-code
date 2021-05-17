@@ -21,3 +21,17 @@
   [{:keys [location velocity acceleration mass]}]
   (let [new-velocity (vec/add velocity acceleration)]
     (make (vec/add new-velocity location) new-velocity (vec/mult acceleration 0) mass)))
+
+(defn check-edges
+  [{:keys [location velocity acceleration mass]} bounds-x bounds-y]
+  (let [new-location
+        (vec/make
+          (cond
+            (> (location :x) bounds-x) 0
+            (< (location :x) 0) bounds-x
+            :else (location :x))
+          (cond
+            (> (location :y) bounds-y) 0
+            (< (location :y) 0) bounds-y
+            :else (location :y)))]
+    (make new-location velocity acceleration mass)))
