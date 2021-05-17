@@ -41,6 +41,13 @@
       (= 0 m) vector
       :else (div vector m))))
 
+(defn limit
+  [vector max]
+  (let [m (mag vector)]
+    (cond
+      (> m max) (mult (normalise vector) max)
+      :else vector)))
+
 (defn random-2d
   []
   (normalise (make (q/random -1 1) (q/random -1 1))))
