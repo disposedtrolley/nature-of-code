@@ -24,7 +24,7 @@
         (vec/update-mover mover2)))))
 
 (q/defsketch ex-2-5
-             :title "Vectors - Ex 1.2"
+             :title "Vectors - Ex 2.5"
              :settings #(q/smooth 2)
              :setup setup-state
              :draw draw-state
