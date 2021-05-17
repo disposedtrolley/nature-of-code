@@ -17,11 +17,12 @@
 
 (defn update-state
   [mover]
-  ;(let [wind (vec/make 0.01 0) gravity (vec/make 0 0.1)]
-  (let [wind (vec/make 0.01 0) gravity (vec/make 0 0.1)]
-    (let [mover (vec/apply-force mover wind)]
-      (let [mover2 (vec/apply-force mover gravity)]
-        (vec/update-mover mover2)))))
+  (let [wind (vec/make 0.01 0)
+        gravity (vec/make 0 0.1)]
+    (-> mover
+        (vec/apply-force wind)
+        (vec/apply-force gravity)
+        (vec/update-mover))))
 
 (q/defsketch ex-2-5
              :title "Vectors - Ex 2.5"
