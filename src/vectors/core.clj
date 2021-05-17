@@ -45,8 +45,8 @@
   ([]
    (make-mover 20))
   ([mass]
-   (make-mover mass (make 50 50) (make 0 0) (make 0 0)))
-  ([mass location velocity acceleration]
+   (make-mover (make 50 50) (make 0 0) (make 0 0) mass))
+  ([location velocity acceleration mass]
    {:location     location
     :velocity     velocity
     :acceleration acceleration
@@ -55,18 +55,12 @@
 (defn apply-force
   [{:keys [location velocity acceleration mass]} force]
   (let [f (div force mass)]
-    {:location location
-     :velocity (add f velocity)
-     :acceleration (add f acceleration)
-     :mass mass}))
+    (make-mover location (add f velocity) (add f acceleration) mass)))
 
 (defn update-mover
   [{:keys [location velocity acceleration mass]}]
   (let [new-velocity (add velocity acceleration)]
-    {:location (add new-velocity location)
-     :velocity new-velocity
-     :acceleration (mult acceleration 0)
-     :mass mass}))
+    (make-mover (add new-velocity location) new-velocity (mult acceleration 0) mass)))
 
 (defn random-2d
   []
