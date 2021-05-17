@@ -42,11 +42,15 @@
       :else (div vector m))))
 
 (defn make-mover
-  [mass]
-  {:location     (make (/ 100 2) (/ 100 2))
-   :velocity     (make 0 0)
-   :acceleration (make 0 0)
-   :mass         mass})
+  ([]
+   (make-mover 20))
+  ([mass]
+   (make-mover mass (make 50 50) (make 0 0) (make 0 0)))
+  ([mass location velocity acceleration]
+   {:location     location
+    :velocity     velocity
+    :acceleration acceleration
+    :mass         mass}))
 
 (defn apply-force
   [{:keys [location velocity acceleration mass]} force]
