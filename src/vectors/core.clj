@@ -42,24 +42,27 @@
       :else (div vector m))))
 
 (defn make-mover
-  []
+  [mass]
   {:location     (make (/ 100 2) (/ 100 2))
-   ;:location     (make (/ (q/width) 2) (/ (q/height) 2))
    :velocity     (make 0 0)
-   :acceleration (make -0.001 0.01)})
+   :acceleration (make 0 0)
+   :mass         mass})
 
 (defn apply-force
-  [mover force]
-  {:location (mover :location)
-   :velocity (mover :velocity)
-   :acceleration (add force (mover :acceleration))})
+  [{:keys [location velocity acceleration mass]} force]
+  (let [f (div force mass)]
+    {:location location
+     :velocity (add f velocity)
+     :acceleration (add f acceleration)
+     :mass mass}))
 
 (defn update-mover
-  [{:keys [location velocity acceleration]}]
+  [{:keys [location velocity acceleration mass]}]
   (let [new-velocity (add velocity acceleration)]
     {:location (add new-velocity location)
      :velocity new-velocity
-     :acceleration (mult acceleration 0)}))
+     :acceleration (mult acceleration 0)
+     :mass mass}))
 
 (defn random-2d
   []
