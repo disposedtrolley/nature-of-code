@@ -44,3 +44,9 @@
             :else (location :y)))]
     (assoc mover
       :location l)))
+
+(defn replace-acceleration
+  [mover new-acceleration]
+  (assoc mover
+    :acceleration new-acceleration))
+
