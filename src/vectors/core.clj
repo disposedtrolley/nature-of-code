@@ -41,25 +41,12 @@
       (= 0 m) vector
       :else (div vector m))))
 
-(defn make-mover
-  []
-  {:location     (make (/ 100 2) (/ 100 2))
-   ;:location     (make (/ (q/width) 2) (/ (q/height) 2))
-   :velocity     (make 0 0)
-   :acceleration (make -0.001 0.01)})
-
-(defn apply-force
-  [mover force]
-  {:location (mover :location)
-   :velocity (mover :velocity)
-   :acceleration (add force (mover :acceleration))})
-
-(defn update-mover
-  [{:keys [location velocity acceleration]}]
-  (let [new-velocity (add velocity acceleration)]
-    {:location (add new-velocity location)
-     :velocity new-velocity
-     :acceleration (mult acceleration 0)}))
+(defn limit
+  [vector max]
+  (let [m (mag vector)]
+    (cond
+      (> m max) (mult (normalise vector) max)
+      :else vector)))
 
 (defn random-2d
   []
